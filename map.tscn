@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv4nmqakneuy0"]
+
+[ext_resource type="Script" path="res://map.gd" id="1_k0gis"]
+[ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://ball.tscn" id="1_vc8ij"]
+[ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://flipper.tscn" id="2_4okck"]
+[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://bumper.tscn" id="3_01owf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nclha"]
+friction = 0.5
+bounce = 0.3
+
+[node name="Map" type="Node"]
+script = ExtResource("1_k0gis")
+
+[node name="Walls" type="RigidBody2D" parent="."]
+disable_mode = 2
+physics_material_override = SubResource("PhysicsMaterial_nclha")
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0, 1142, 0, 1142, 638, 10, 638, 10, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Walls"]
+polygon = PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0, 1142, 0, 1142, 638, 10, 638, 10, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(0, 0, 0, 10, 1152, 10, 1152, 0)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Walls"]
+polygon = PackedVector2Array(0, 0, 0, 10, 1152, 10, 1152, 0)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(104, 6)
+polygon = PackedVector2Array(402, 490, 356, 463, 295, 386, 283, 358, 252, 301, 244, 256, 252, 217, 268, 169, 280, 124, 316, 68, 341, 20, 349, 4, 264, 7, 178, 203, 184, 369, 258, 585)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(1, 2)
+polygon = PackedVector2Array(852, 546, 892, 522, 960, 477, 1026, 346, 1038, 258, 1037, 179, 1029, 125, 1019, 91, 1042, 89, 1061, 89, 1076, 95, 1087, 104, 1099, 130, 1104, 148, 1110, 270, 1110, 638, 866.556, 549.986)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(-1, 5)
+polygon = PackedVector2Array(1143, 132, 1137, 88, 1136, 83, 1135, 79, 1134, 75, 1132, 70, 1131, 68, 1128, 64, 1121, 57, 1115, 53, 1109, 50, 1102, 47, 1095, 44, 1083, 39, 1052, 31, 1001, 31, 994, 32, 987, 34, 972, 43, 962, 46, 957, 33, 954, 5, 1148, 6)
+
+[node name="ball" parent="." instance=ExtResource("1_vc8ij")]
+position = Vector2(1126, 446)
+mass = 0.05
+gravity_scale = 0.8
+
+[node name="flipper" parent="." instance=ExtResource("2_4okck")]
+position = Vector2(493, 501)
+rotation = -1.0472
+flipper_type = 1
+
+[node name="flipper2" parent="." instance=ExtResource("2_4okck")]
+position = Vector2(868, 550)
+rotation = 1.0472
+
+[node name="bumper" parent="." instance=ExtResource("3_01owf")]
+position = Vector2(1127, 537)
