@@ -20,7 +20,7 @@ disable_collision = false
 length = 100.0
 rest_length = 100.0
 stiffness = 64.0
-damping = 0.05
+damping = 0.02
 
 [node name="base" type="RigidBody2D" parent="spring"]
 position = Vector2(0, 120)

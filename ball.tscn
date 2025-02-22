@@ -4,6 +4,7 @@
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5hnsf"]
+radius = 9.0
 
 [sub_resource type="Gradient" id="Gradient_2xma7"]
 offsets = PackedFloat32Array(0.701299, 0.785714)
@@ -24,5 +25,6 @@ shape = SubResource("CircleShape2D_5hnsf")
 debug_color = Color(0, 0.640211, 0.353317, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_k8bb4")
