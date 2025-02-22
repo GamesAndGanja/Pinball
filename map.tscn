@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv4nmqakneuy0"]
+[gd_scene load_steps=5 format=3 uid="uid://cv4nmqakneuy0"]
 
 [ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://ball.tscn" id="1_vc8ij"]
 [ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://flipper.tscn" id="2_4okck"]
+[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://bumper.tscn" id="3_01owf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nclha"]
 friction = 0.5
@@ -29,8 +30,15 @@ polygon = PackedVector2Array(0, 0, 0, 10, 1152, 10, 1152, 0)
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(402, 490, 356, 463, 295, 386, 283, 358, 252, 301, 244, 256, 252, 217, 268, 169, 280, 124, 316, 68, 341, 20, 349, 4, 264, 7, 178, 203, 184, 369, 250, 505)
 
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(797, 491, 820, 477, 851, 464, 875, 451, 891, 433, 920, 411, 965, 340, 971, 290, 975, 215, 979, 124, 1000, 76, 1027, 66, 1067, 75, 1089, 99, 1104, 148, 1110, 270, 1110, 638)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(1143, 132, 1128, 88, 1101, 52, 1049, 29, 996, 29, 974, 44, 958, 74, 917, 72, 916, 5, 1148, 6)
+
 [node name="ball" parent="." instance=ExtResource("1_vc8ij")]
-position = Vector2(459, 63)
+position = Vector2(1125, 424)
+mass = 0.05
 
 [node name="flipper" parent="." instance=ExtResource("2_4okck")]
 position = Vector2(400, 500)
@@ -40,3 +48,6 @@ flipper_type = 1
 [node name="flipper2" parent="." instance=ExtResource("2_4okck")]
 position = Vector2(800, 500)
 rotation = 1.0472
+
+[node name="bumper" parent="." instance=ExtResource("3_01owf")]
+position = Vector2(1126, 580)
