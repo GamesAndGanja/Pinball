@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv4nmqakneuy0"]
+[gd_scene load_steps=12 format=3 uid="uid://cv4nmqakneuy0"]
 
 [ext_resource type="Script" path="res://map.gd" id="1_k0gis"]
-[ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://ball.tscn" id="1_vc8ij"]
-[ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://flipper.tscn" id="2_4okck"]
+[ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="1_vc8ij"]
+[ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://Objects/Flipper/flipper.tscn" id="2_4okck"]
 [ext_resource type="Texture2D" uid="uid://boow1wtyvsqj6" path="res://Screenshot_3.png" id="2_h7u8t"]
-[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://bumper.tscn" id="3_01owf"]
+[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="3_01owf"]
+[ext_resource type="PackedScene" uid="uid://ds5vt3wehkuwj" path="res://Objects/Ring/ring.tscn" id="6_elu40"]
+[ext_resource type="PackedScene" uid="uid://iynavabx0lta" path="res://Objects/TriBumper/tri_bumper.tscn" id="7_f1ftn"]
+[ext_resource type="PackedScene" uid="uid://dis02ydgw1rj6" path="res://Objects/Lights/tri_light.tscn" id="8_ysbg2"]
+[ext_resource type="PackedScene" uid="uid://cb1tkpvedf7ge" path="res://Objects/CollapseWall/collapse_wall.tscn" id="9_efab6"]
+[ext_resource type="PackedScene" uid="uid://da24mkqsd76g8" path="res://Objects/Launcher/launcher.tscn" id="10_4qt00"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nclha"]
 friction = 0.5
@@ -84,3 +89,48 @@ position = Vector2(1112, 536)
 [node name="Polygon2D3" type="Polygon2D" parent="."]
 color = Color(1, 1, 0.415686, 1)
 polygon = PackedVector2Array(1140, 576, 1115, 576, 1113, 579, 1110, 580, 1107, 580, 1104, 579, 1102, 577, 1101, 575, 1095, 575, 1095, 638, 1142, 638, 1142, 575)
+
+[node name="ring" parent="." instance=ExtResource("6_elu40")]
+position = Vector2(835, 128)
+
+[node name="ring2" parent="." instance=ExtResource("6_elu40")]
+position = Vector2(931, 141)
+
+[node name="ring3" parent="." instance=ExtResource("6_elu40")]
+position = Vector2(931, 220)
+
+[node name="ring4" parent="." instance=ExtResource("6_elu40")]
+position = Vector2(836, 206)
+
+[node name="tri_bumper" parent="." instance=ExtResource("7_f1ftn")]
+position = Vector2(1000, 450)
+
+[node name="tri_bumper2" parent="." instance=ExtResource("7_f1ftn")]
+position = Vector2(750, 450)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="tri_light" parent="." instance=ExtResource("8_ysbg2")]
+position = Vector2(732, 350)
+rotation = -0.773181
+
+[node name="collapse_wall" parent="." instance=ExtResource("9_efab6")]
+position = Vector2(1082, 339)
+rotation = 1.11813
+
+[node name="collapse_wall2" parent="." instance=ExtResource("9_efab6")]
+position = Vector2(1074, 323)
+rotation = 1.11813
+
+[node name="collapse_wall3" parent="." instance=ExtResource("9_efab6")]
+position = Vector2(1066, 307)
+rotation = 1.11813
+input_pickable = false
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="launcher" parent="." instance=ExtResource("10_4qt00")]
+position = Vector2(672, 621)
+
+[node name="launcher2" parent="." instance=ExtResource("10_4qt00")]
+position = Vector2(1074, 623)

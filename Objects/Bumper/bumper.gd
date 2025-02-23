@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("pull_bumper"):
 		bumper_block.apply_impulse(Vector2.DOWN * clamp(intensity, 10, 5000) * delta)
-		intensity += 2.5
+		intensity = intensity + delta * 3500
 	if Input.is_action_just_released("pull_bumper"):
 		intensity = 10
 	bumper_block.position = clamp(bumper_block.position, Vector2(-5, -100), Vector2(5, 60))

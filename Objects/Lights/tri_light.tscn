@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dis02ydgw1rj6"]
+
+[node name="tri_light" type="Polygon2D"]
+rotation = -0.00608786
+color = Color(0, 0, 0, 0.392157)
+polygon = PackedVector2Array(0, -15, 7.5, 15, 0, 10, -7.5, 15)

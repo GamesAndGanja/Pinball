@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://75vtoo3t8fq8"]
 
-[ext_resource type="Script" path="res://flipper.gd" id="1_ctaep"]
+[ext_resource type="Script" path="res://Objects/Flipper/flipper.gd" id="1_ctaep"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68c2d"]
 height = 100.0

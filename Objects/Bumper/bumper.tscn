@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://djvwbrqfd6nkf"]
 
-[ext_resource type="Script" path="res://bumper.gd" id="1_o6b8w"]
+[ext_resource type="Script" path="res://Objects/Bumper/bumper.gd" id="1_o6b8w"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_txhco"]
 

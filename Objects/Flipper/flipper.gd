@@ -17,14 +17,14 @@ func _process(delta: float) -> void:
 	var flipper_rotation
 	if flipper_type == flipper_sides.RIGHT:
 		if Input.is_action_pressed("right_flipper"):
-			flipper_rotation = clamp(self.rotation_degrees + flipper_speed * delta, 60, 120)
+			flipper_rotation = clamp(self.rotation_degrees + flipper_speed * delta, 70, 120)
 		else:
-			flipper_rotation = clamp(self.rotation_degrees - flipper_speed * delta, 60, 120)
+			flipper_rotation = clamp(self.rotation_degrees - flipper_speed * delta, 70, 120)
 		
 	else:
 		if Input.is_action_pressed("left_flipper"):
-			flipper_rotation = clamp(self.rotation_degrees - flipper_speed * delta, -120, -60)
+			flipper_rotation = clamp(self.rotation_degrees - flipper_speed * delta, -120, -70)
 		else:
-			flipper_rotation = clamp(self.rotation_degrees + flipper_speed * delta, -120, -60)
+			flipper_rotation = clamp(self.rotation_degrees + flipper_speed * delta, -120, -70)
 	self.rotation_degrees = flipper_rotation
 	pass
