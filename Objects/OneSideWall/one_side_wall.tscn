@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://6a42kv3a8ft4"]
+
+[node name="one_side_wall" type="RigidBody2D"]
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-17, 6, 17, -15, 17, -8, -17, 13)
+one_way_collision = true

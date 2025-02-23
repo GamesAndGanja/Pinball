@@ -57,10 +57,7 @@ polygon = PackedVector2Array(1085, 526, 1095, 526, 1095, 637, 652, 636, 652, 526
 
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Walls"]
 rotation = 1.92292
-polygon = PackedVector2Array(146.54, -1091.51, 105.101, -1143.4, 102.189, -1145.53, 99.6216, -1146.72, 97.3994, -1146.97, 95.5222, -1146.28, 93.6449, -1145.59, 90.388, -1148.65, 91.5755, -1151.22, 99.0847, -1153.98, 100.962, -1154.67, 103.184, -1154.42, 105.406, -1154.17, 108.912, -1153.33, 114.046, -1150.95, 119.525, -1147.64, 126.384, -1140.57, 133.587, -1132.56, 146.711, -1117.14, 158.895, -1101.38, 148.858, -1088.1)
-
-[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(773, 515, 711, 494, 709, 493, 707, 492, 704, 490, 703, 489, 702, 488, 701, 487, 701, 485, 701, 479, 699, 478, 694, 480, 694, 512, 695, 514, 697, 516, 700, 517, 703, 517, 705, 516, 707, 514, 708, 513, 710, 512, 712, 511, 716, 511, 720, 512, 723, 513, 731, 516, 761, 527, 771, 530, 771, 527, 773, 520, 776, 517)
+polygon = PackedVector2Array(146.54, -1091.51, 105.101, -1143.4, 102.189, -1145.53, 99.6216, -1146.72, 97.3994, -1146.97, 95.5222, -1146.28, 46.7099, -1128.34, 44.6405, -1133.97, 99.0847, -1153.98, 100.962, -1154.67, 103.184, -1154.42, 105.406, -1154.17, 108.912, -1153.33, 114.046, -1150.95, 119.525, -1147.64, 126.384, -1140.57, 133.587, -1132.56, 146.711, -1117.14, 158.895, -1101.38, 148.858, -1088.1)
 
 [node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(16, 18)
@@ -69,8 +66,14 @@ polygon = PackedVector2Array(778, 76, 739, 107, 739, 133, 738, 135, 737, 136, 73
 [node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(1083, 157, 1085, 148, 1086, 138, 1084, 126, 1074, 113, 1059, 102, 1039, 95, 1016, 91, 992, 89, 972, 90, 960, 92, 958, 94, 960, 97, 965, 99, 973, 101, 988, 108, 1003, 116, 1007, 119, 1008, 122, 1008, 125, 1007, 127, 1007, 155, 1009, 158, 1012, 159, 1016, 160, 1020, 160, 1023, 158, 1026, 155, 1027, 151, 1027, 145, 1027, 135, 1027, 124, 1029, 121, 1033, 118, 1037, 116, 1041, 115, 1045, 114, 1051, 114, 1059, 115, 1063, 117, 1066, 119, 1070, 122, 1073, 127, 1075, 133, 1075, 138, 1075, 145, 1074, 151, 1073, 155, 1073, 158, 1076, 160, 1080, 160)
 
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(1746, 0)
+rotation = -1.92335
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(146.54, -1091.51, 105.101, -1143.4, 102.189, -1145.53, 99.6216, -1146.72, 97.3994, -1146.97, 95.5222, -1146.28, 46.7099, -1128.34, 44.6405, -1133.97, 99.0847, -1153.98, 100.962, -1154.67, 103.184, -1154.42, 105.406, -1154.17, 108.912, -1153.33, 114.046, -1150.95, 119.525, -1147.64, 126.384, -1140.57, 133.587, -1132.56, 146.711, -1117.14, 158.895, -1101.38, 148.858, -1088.1)
+
 [node name="ball" parent="." instance=ExtResource("1_vc8ij")]
-position = Vector2(1118, 505)
+position = Vector2(1115, 504)
 mass = 0.05
 gravity_scale = 0.8
 
@@ -103,10 +106,10 @@ position = Vector2(931, 220)
 position = Vector2(836, 206)
 
 [node name="tri_bumper" parent="." instance=ExtResource("7_f1ftn")]
-position = Vector2(1000, 450)
+position = Vector2(999, 452)
 
 [node name="tri_bumper2" parent="." instance=ExtResource("7_f1ftn")]
-position = Vector2(750, 450)
+position = Vector2(747, 452)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
@@ -134,3 +137,11 @@ position = Vector2(672, 621)
 
 [node name="launcher2" parent="." instance=ExtResource("10_4qt00")]
 position = Vector2(1074, 623)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(1113, 254)
+freeze = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(-17, 6, 17, -15, 17, -8, -17, 13)
+one_way_collision = true
