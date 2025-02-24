@@ -1,7 +1,94 @@
-[gd_scene format=3 uid="uid://c3ay080kxkv7s"]
+[gd_scene load_steps=9 format=3 uid="uid://c3ay080kxkv7s"]
+
+[ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="1_kwka7"]
+[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="2_nl4ru"]
+[ext_resource type="PackedScene" uid="uid://6a42kv3a8ft4" path="res://Objects/OneSideWall/one_side_wall.tscn" id="3_6hkll"]
+[ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://Objects/Flipper/flipper.tscn" id="4_milxs"]
+[ext_resource type="PackedScene" uid="uid://iynavabx0lta" path="res://Objects/TriBumper/tri_bumper.tscn" id="5_tyrt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn4vx"]
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tfxl"]
+size = Vector2(2, 533)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocgpb"]
+size = Vector2(150, 60)
 
 [node name="map1" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="walls" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2(-565, 0)
+shape = SubResource("RectangleShape2D_nn4vx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2(565, 0)
+shape = SubResource("RectangleShape2D_nn4vx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
+position = Vector2(520, 273.5)
+shape = SubResource("RectangleShape2D_3tfxl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(0, -11)
+polygon = PackedVector2Array(555, -9, 548, -73, 534, -130, 513, -169, 481, -195, 461, -201, 442, -206, 442, -218, 464, -228, 512, -225, 555, -216)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(-80, 29)
+polygon = PackedVector2Array(314, 229, 314, 279, 313, 288, 309, 297, 303, 303, 296, 307, 287, 311, 252, 324, 194, 342, 197, 362, 283, 340, 297, 335, 310, 328, 316, 320, 319, 315, 321, 309, 321, 229)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(80, 29)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(314, 229, 314, 279, 313, 288, 309, 297, 303, 303, 296, 307, 287, 311, 252, 324, 194, 342, 197, 362, 283, 340, 297, 335, 310, 328, 316, 320, 319, 315, 321, 309, 321, 229)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
+position = Vector2(0, 510)
+shape = SubResource("RectangleShape2D_ocgpb")
+one_way_collision_margin = 0.0
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="walls"]
+polygon = PackedVector2Array(-247, 410, -247, 540, -75, 540, -75, 480)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="walls"]
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-247, 410, -247, 540, -75, 540, -75, 480)
+
+[node name="ball2" parent="." instance=ExtResource("1_kwka7")]
+position = Vector2(544, 415)
+mass = 0.01
+gravity_scale = 0.8
+
+[node name="bumper" parent="." instance=ExtResource("2_nl4ru")]
+position = Vector2(538, 444)
+
+[node name="one_side_wall" parent="." instance=ExtResource("3_6hkll")]
+position = Vector2(538, 1)
+
+[node name="flipper" parent="." instance=ExtResource("4_milxs")]
+position = Vector2(-120, 380)
+rotation = -1.31603
+flipper_type = 1
+
+[node name="flipper2" parent="." instance=ExtResource("4_milxs")]
+position = Vector2(120, 380)
+rotation = 1.31598
+
+[node name="flipper3" parent="." instance=ExtResource("4_milxs")]
+position = Vector2(-542, 245)
+flipper_type = 1
+
+[node name="flipper4" parent="." instance=ExtResource("4_milxs")]
+position = Vector2(510, 274)
+
+[node name="tri_bumper" parent="." instance=ExtResource("5_tyrt1")]
+position = Vector2(190, 297)
+
+[node name="tri_bumper2" parent="." instance=ExtResource("5_tyrt1")]
+position = Vector2(-190, 297)
+scale = Vector2(-1, 1)
