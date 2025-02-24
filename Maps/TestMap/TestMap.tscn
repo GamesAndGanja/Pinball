@@ -1,28 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://cv4nmqakneuy0"]
+[gd_scene load_steps=15 format=3 uid="uid://cv4nmqakneuy0"]
 
-[ext_resource type="Script" path="res://map.gd" id="1_k0gis"]
-[ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="1_vc8ij"]
-[ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://Objects/Flipper/flipper.tscn" id="2_4okck"]
-[ext_resource type="Texture2D" uid="uid://boow1wtyvsqj6" path="res://Screenshot_3.png" id="2_h7u8t"]
-[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="3_01owf"]
-[ext_resource type="PackedScene" uid="uid://ds5vt3wehkuwj" path="res://Objects/Ring/ring.tscn" id="6_elu40"]
-[ext_resource type="PackedScene" uid="uid://iynavabx0lta" path="res://Objects/TriBumper/tri_bumper.tscn" id="7_f1ftn"]
-[ext_resource type="PackedScene" uid="uid://dis02ydgw1rj6" path="res://Objects/Lights/tri_light.tscn" id="8_ysbg2"]
-[ext_resource type="PackedScene" uid="uid://cb1tkpvedf7ge" path="res://Objects/CollapseWall/collapse_wall.tscn" id="9_efab6"]
-[ext_resource type="PackedScene" uid="uid://da24mkqsd76g8" path="res://Objects/Launcher/launcher.tscn" id="10_4qt00"]
-[ext_resource type="PackedScene" uid="uid://6a42kv3a8ft4" path="res://Objects/OneSideWall/one_side_wall.tscn" id="11_xny7u"]
+[ext_resource type="Script" path="res://Maps/TestMap/TestMap.gd" id="1_nv1wf"]
+[ext_resource type="Texture2D" uid="uid://boow1wtyvsqj6" path="res://Maps/TestMap/Screenshot_3.png" id="2_y43sn"]
+[ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="3_jgo8c"]
+[ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://Objects/Flipper/flipper.tscn" id="4_wpkom"]
+[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="5_ascvg"]
+[ext_resource type="PackedScene" uid="uid://ds5vt3wehkuwj" path="res://Objects/Ring/ring.tscn" id="6_1e8e4"]
+[ext_resource type="PackedScene" uid="uid://iynavabx0lta" path="res://Objects/TriBumper/tri_bumper.tscn" id="7_uj01r"]
+[ext_resource type="PackedScene" uid="uid://dis02ydgw1rj6" path="res://Objects/Lights/tri_light.tscn" id="8_w2q2p"]
+[ext_resource type="PackedScene" uid="uid://cb1tkpvedf7ge" path="res://Objects/CollapseWall/collapse_wall.tscn" id="9_xyks5"]
+[ext_resource type="PackedScene" uid="uid://da24mkqsd76g8" path="res://Objects/Launcher/launcher.tscn" id="10_0irhi"]
+[ext_resource type="PackedScene" uid="uid://6a42kv3a8ft4" path="res://Objects/OneSideWall/one_side_wall.tscn" id="11_kt225"]
+[ext_resource type="PackedScene" uid="uid://drlxc6a5dpq7q" path="res://Objects/Rail/rail.tscn" id="12_qchwn"]
+[ext_resource type="PackedScene" uid="uid://brhr8nhc2d17u" path="res://Objects/Lights/circle_light.tscn" id="13_tvvld"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nclha"]
 friction = 0.5
 bounce = 0.3
 
 [node name="Map" type="Node"]
-script = ExtResource("1_k0gis")
+script = ExtResource("1_nv1wf")
 
 [node name="skeleton" type="Sprite2D" parent="."]
 position = Vector2(261, 325)
 scale = Vector2(1.14871, 0.695027)
-texture = ExtResource("2_h7u8t")
+texture = ExtResource("2_y43sn")
 
 [node name="Walls" type="RigidBody2D" parent="."]
 disable_mode = 2
@@ -73,78 +75,112 @@ rotation = -1.92335
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(146.54, -1091.51, 105.101, -1143.4, 102.189, -1145.53, 99.6216, -1146.72, 97.3994, -1146.97, 95.5222, -1146.28, 46.7099, -1128.34, 44.6405, -1133.97, 99.0847, -1153.98, 100.962, -1154.67, 103.184, -1154.42, 105.406, -1154.17, 108.912, -1153.33, 114.046, -1150.95, 119.525, -1147.64, 126.384, -1140.57, 133.587, -1132.56, 146.711, -1117.14, 158.895, -1101.38, 148.858, -1088.1)
 
-[node name="ball" parent="." instance=ExtResource("1_vc8ij")]
-position = Vector2(1115, 504)
+[node name="ball" parent="." instance=ExtResource("3_jgo8c")]
+position = Vector2(1114, 379)
 mass = 0.05
 gravity_scale = 0.8
 
-[node name="flipper" parent="." instance=ExtResource("2_4okck")]
+[node name="flipper" parent="." instance=ExtResource("4_wpkom")]
 position = Vector2(759, 520)
 rotation = 5.06142
 flipper_type = 1
 
-[node name="flipper2" parent="." instance=ExtResource("2_4okck")]
+[node name="flipper2" parent="." instance=ExtResource("4_wpkom")]
 position = Vector2(986, 520)
 rotation = -5.06145
 
-[node name="bumper" parent="." instance=ExtResource("3_01owf")]
+[node name="bumper" parent="." instance=ExtResource("5_ascvg")]
 position = Vector2(1112, 536)
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]
 color = Color(1, 1, 0.415686, 1)
 polygon = PackedVector2Array(1140, 576, 1115, 576, 1113, 579, 1110, 580, 1107, 580, 1104, 579, 1102, 577, 1101, 575, 1095, 575, 1095, 638, 1142, 638, 1142, 575)
 
-[node name="ring" parent="." instance=ExtResource("6_elu40")]
+[node name="ring" parent="." instance=ExtResource("6_1e8e4")]
 position = Vector2(835, 128)
 
-[node name="ring2" parent="." instance=ExtResource("6_elu40")]
+[node name="ring2" parent="." instance=ExtResource("6_1e8e4")]
 position = Vector2(931, 141)
 
-[node name="ring3" parent="." instance=ExtResource("6_elu40")]
+[node name="ring3" parent="." instance=ExtResource("6_1e8e4")]
 position = Vector2(931, 220)
 
-[node name="ring4" parent="." instance=ExtResource("6_elu40")]
+[node name="ring4" parent="." instance=ExtResource("6_1e8e4")]
 position = Vector2(836, 206)
 
-[node name="tri_bumper" parent="." instance=ExtResource("7_f1ftn")]
+[node name="tri_bumper" parent="." instance=ExtResource("7_uj01r")]
 position = Vector2(999, 452)
 
-[node name="tri_bumper2" parent="." instance=ExtResource("7_f1ftn")]
+[node name="tri_bumper2" parent="." instance=ExtResource("7_uj01r")]
 position = Vector2(747, 452)
 rotation = -3.14159
 scale = Vector2(1, -1)
 
-[node name="tri_light" parent="." instance=ExtResource("8_ysbg2")]
+[node name="tri_light" parent="." instance=ExtResource("8_w2q2p")]
 position = Vector2(732, 350)
 rotation = -0.773181
 
-[node name="collapse_wall" parent="." instance=ExtResource("9_efab6")]
+[node name="collapse_wall" parent="." node_paths=PackedStringArray("light") instance=ExtResource("9_xyks5")]
 position = Vector2(1082, 339)
 rotation = 1.11813
+light = NodePath("../circle_light3")
+active_color = Color(1, 0.705882, 0, 0.392157)
 
-[node name="collapse_wall2" parent="." instance=ExtResource("9_efab6")]
+[node name="collapse_wall2" parent="." node_paths=PackedStringArray("light") instance=ExtResource("9_xyks5")]
 position = Vector2(1074, 323)
 rotation = 1.11813
+light = NodePath("../circle_light4")
+active_color = Color(1, 0.705882, 0, 0.392157)
 
-[node name="collapse_wall3" parent="." instance=ExtResource("9_efab6")]
+[node name="collapse_wall3" parent="." node_paths=PackedStringArray("light") instance=ExtResource("9_xyks5")]
 position = Vector2(1066, 307)
 rotation = 1.11813
 input_pickable = false
 linear_damp = 0.0
 angular_damp = 0.0
+light = NodePath("../circle_light5")
+active_color = Color(1, 0.705882, 0, 0.392157)
 
-[node name="launcher" parent="." instance=ExtResource("10_4qt00")]
+[node name="launcher" parent="." node_paths=PackedStringArray("launcher_wall") instance=ExtResource("10_0irhi")]
 position = Vector2(672, 621)
+launcher_wall = NodePath("../one_side_wall3")
 
-[node name="launcher2" parent="." instance=ExtResource("10_4qt00")]
+[node name="launcher2" parent="." node_paths=PackedStringArray("launcher_wall") instance=ExtResource("10_0irhi")]
 position = Vector2(1074, 623)
+launcher_wall = NodePath("../one_side_wall2")
 
-[node name="one_side_wall" parent="." instance=ExtResource("11_xny7u")]
+[node name="one_side_wall" parent="." instance=ExtResource("11_kt225")]
 position = Vector2(1113, 254)
 
-[node name="one_side_wall2" parent="." instance=ExtResource("11_xny7u")]
+[node name="one_side_wall2" parent="." instance=ExtResource("11_kt225")]
 position = Vector2(1078, 525)
 
-[node name="one_side_wall3" parent="." instance=ExtResource("11_xny7u")]
+[node name="one_side_wall3" parent="." instance=ExtResource("11_kt225")]
 position = Vector2(673, 535)
 scale = Vector2(-1, 1)
+
+[node name="rail" parent="." node_paths=PackedStringArray("light") instance=ExtResource("12_qchwn")]
+position = Vector2(713, 452)
+light = NodePath("../circle_light")
+
+[node name="circle_light" parent="." instance=ExtResource("13_tvvld")]
+position = Vector2(712, 395)
+
+[node name="rail2" parent="." node_paths=PackedStringArray("light") instance=ExtResource("12_qchwn")]
+position = Vector2(1033, 447)
+light = NodePath("../circle_light2")
+
+[node name="circle_light2" parent="." instance=ExtResource("13_tvvld")]
+position = Vector2(1035, 398)
+
+[node name="circle_light3" parent="." instance=ExtResource("13_tvvld")]
+position = Vector2(1054, 351)
+scale = Vector2(0.5, 0.5)
+
+[node name="circle_light4" parent="." instance=ExtResource("13_tvvld")]
+position = Vector2(1048, 333)
+scale = Vector2(0.5, 0.5)
+
+[node name="circle_light5" parent="." instance=ExtResource("13_tvvld")]
+position = Vector2(1042, 314)
+scale = Vector2(0.5, 0.5)
