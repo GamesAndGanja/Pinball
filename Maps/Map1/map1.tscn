@@ -1,21 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3ay080kxkv7s"]
+[gd_scene load_steps=17 format=3 uid="uid://c3ay080kxkv7s"]
 
+[ext_resource type="Script" path="res://Maps/Map1/map_1.gd" id="1_ef8pc"]
 [ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="1_kwka7"]
 [ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="2_nl4ru"]
 [ext_resource type="PackedScene" uid="uid://6a42kv3a8ft4" path="res://Objects/OneSideWall/one_side_wall.tscn" id="3_6hkll"]
 [ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://Objects/Flipper/flipper.tscn" id="4_milxs"]
 [ext_resource type="PackedScene" uid="uid://iynavabx0lta" path="res://Objects/TriBumper/tri_bumper.tscn" id="5_tyrt1"]
+[ext_resource type="PackedScene" uid="uid://da24mkqsd76g8" path="res://Objects/Launcher/launcher.tscn" id="7_vopbr"]
+[ext_resource type="PackedScene" uid="uid://cb1tkpvedf7ge" path="res://Objects/CollapseWall/collapse_wall.tscn" id="8_c3wmh"]
+[ext_resource type="PackedScene" uid="uid://brhr8nhc2d17u" path="res://Objects/Lights/circle_light.tscn" id="9_a2wcq"]
+[ext_resource type="PackedScene" uid="uid://ds5vt3wehkuwj" path="res://Objects/Ring/ring.tscn" id="10_eqggv"]
+[ext_resource type="PackedScene" uid="uid://drlxc6a5dpq7q" path="res://Objects/Rail/rail.tscn" id="11_sr2ug"]
+[ext_resource type="PackedScene" uid="uid://dis02ydgw1rj6" path="res://Objects/Lights/tri_light.tscn" id="12_o1v6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn4vx"]
 size = Vector2(20, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3tfxl"]
-size = Vector2(2, 533)
+size = Vector2(17, 548.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocgpb"]
-size = Vector2(150, 60)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rwgn"]
+size = Vector2(766, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6sd01"]
+radius = 4.0
+height = 40.0
 
 [node name="map1" type="Node2D"]
+script = ExtResource("1_ef8pc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -23,52 +35,106 @@ size = Vector2(150, 60)
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
-position = Vector2(-565, 0)
+position = Vector2(-367, 0)
 shape = SubResource("RectangleShape2D_nn4vx")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
-position = Vector2(565, 0)
+position = Vector2(419, 0)
 shape = SubResource("RectangleShape2D_nn4vx")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
-position = Vector2(520, 273.5)
+position = Vector2(366.5, 266.25)
 shape = SubResource("RectangleShape2D_3tfxl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls"]
-position = Vector2(0, -11)
-polygon = PackedVector2Array(555, -9, 548, -73, 534, -130, 513, -169, 481, -195, 461, -201, 442, -206, 442, -218, 464, -228, 512, -225, 555, -216)
+position = Vector2(-144, -15)
+polygon = PackedVector2Array(553, -17, 548, -73, 545, -95, 541, -110, 534, -130, 526, -152, 521, -161, 515, -170, 508, -177, 500, -184, 493, -190, 481, -195, 461, -201, 442, -206, 439, -209, 438, -212, 439, -216, 442, -218, 464, -228, 512, -225, 553, -216)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="walls"]
 position = Vector2(-80, 29)
 polygon = PackedVector2Array(314, 229, 314, 279, 313, 288, 309, 297, 303, 303, 296, 307, 287, 311, 252, 324, 194, 342, 197, 362, 283, 340, 297, 335, 310, 328, 316, 320, 319, 315, 321, 309, 321, 229)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="walls"]
-position = Vector2(80, 29)
+position = Vector2(81, 30)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(314, 229, 314, 279, 313, 288, 309, 297, 303, 303, 296, 307, 287, 311, 252, 324, 194, 342, 197, 362, 283, 340, 297, 335, 310, 328, 316, 320, 319, 315, 321, 309, 321, 229)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
-position = Vector2(0, 510)
-shape = SubResource("RectangleShape2D_ocgpb")
-one_way_collision_margin = 0.0
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls"]
+position = Vector2(26, -530)
+shape = SubResource("RectangleShape2D_8rwgn")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="walls"]
+position = Vector2(26, 530)
+shape = SubResource("RectangleShape2D_8rwgn")
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(-146, -25)
+polygon = PackedVector2Array(444, -208, 493, -232, 504, -238, 514, -246, 522, -254, 531, -266, 535, -272, 555, -313, 555, -206, 513, -215, 466, -218)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(11, -20)
+scale = Vector2(0.68197, 1)
+polygon = PackedVector2Array(-388, 410, -388, 540, 358, 540, 358, 410, 60, 480, -90, 480)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="walls"]
-polygon = PackedVector2Array(-247, 410, -247, 540, -75, 540, -75, 480)
+position = Vector2(19, -2)
+scale = Vector2(0.953906, 1)
+polygon = PackedVector2Array(409, -370, 409, -519, -394.169, -519, -394.169, -371, -381, -432, -375, -454, -370, -465, -364, -471, -358, -476, -351, -480, -340, -486, -325, -491, -300, -496, -241.184, -501.806, 199.575, -501.889, 208.743, -501.086, 244, -498, 271, -495, 299, -491, 322, -484, 342, -476, 357, -465, 374, -447, 388, -424, 396, -407, 402, -385, 409, -336)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="walls"]
+polygon = PackedVector2Array(289, 369, 289, 520, 358, 520, 358, 334)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(1, 0)
 scale = Vector2(-1, 1)
-polygon = PackedVector2Array(-247, 410, -247, 540, -75, 540, -75, 480)
+polygon = PackedVector2Array(289, 369, 289, 520, 358, 520, 358, 334)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(0, -28)
+polygon = PackedVector2Array(375, 7, 375, 20, 358, 20)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="walls"]
+polygon = PackedVector2Array(-288, 370, -288, 148, -288, 129, -287, 117, -282, 104, -277, 94, -272, 85, -264, 75, -253, 65, -277, 28, -287, 15, -294, 8, -303, -3, -314, -24, -325, -46, -335, -69, -344, -102, -357, -155, -357, 334)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(1, 1)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-288, 370, -288, 217, -288, 202, -287, 182, -282, 166, -275, 158, -266, 151, -284, 140, -293, 125, -266.89, 87.6382, -265.577, 85.9459, -263.798, 84.3269, -233.482, 82.4556, -230.388, 82.102, -227.825, 80.953, -225.969, 78.8317, -225.262, 76.622, -224.407, 71.5019, -229, 64, -357, -9, -356, 84, -357, 334)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
+position = Vector2(-75, -440)
+shape = SubResource("CapsuleShape2D_6sd01")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls"]
+position = Vector2(-25, -440)
+shape = SubResource("CapsuleShape2D_6sd01")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls"]
+position = Vector2(25, -440)
+shape = SubResource("CapsuleShape2D_6sd01")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="walls"]
+position = Vector2(75, -440)
+shape = SubResource("CapsuleShape2D_6sd01")
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(357, 112)
+polygon = PackedVector2Array(-714, -485, -708, -514, -709, -495, -708, -467, -706, -433, -711, -416, -712, -399, -714, -365)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(357, 93)
+polygon = PackedVector2Array(-674, -398, -668, -397, -672, -355, -670, -304, -652, -256, -623, -224, -548, -155, -556, -155, -564, -154, -574, -149, -579, -140, -581, -125, -602, -157, -621, -178, -659, -251, -671, -279, -676, -298, -678, -324, -678, -349)
 
 [node name="ball2" parent="." instance=ExtResource("1_kwka7")]
-position = Vector2(544, 415)
-mass = 0.01
+position = Vector2(398, 410)
+mass = 0.03
 gravity_scale = 0.8
 
 [node name="bumper" parent="." instance=ExtResource("2_nl4ru")]
-position = Vector2(538, 444)
+position = Vector2(392, 438)
 
 [node name="one_side_wall" parent="." instance=ExtResource("3_6hkll")]
-position = Vector2(538, 1)
+position = Vector2(392, -27)
 
 [node name="flipper" parent="." instance=ExtResource("4_milxs")]
 position = Vector2(-120, 380)
@@ -79,16 +145,145 @@ flipper_type = 1
 position = Vector2(120, 380)
 rotation = 1.31598
 
-[node name="flipper3" parent="." instance=ExtResource("4_milxs")]
-position = Vector2(-542, 245)
-flipper_type = 1
-
-[node name="flipper4" parent="." instance=ExtResource("4_milxs")]
-position = Vector2(510, 274)
-
 [node name="tri_bumper" parent="." instance=ExtResource("5_tyrt1")]
 position = Vector2(190, 297)
 
 [node name="tri_bumper2" parent="." instance=ExtResource("5_tyrt1")]
 position = Vector2(-190, 297)
 scale = Vector2(-1, 1)
+
+[node name="tri_bumper3" parent="." instance=ExtResource("5_tyrt1")]
+position = Vector2(247, -324)
+
+[node name="tri_bumper4" parent="." instance=ExtResource("5_tyrt1")]
+position = Vector2(-247, -324)
+scale = Vector2(-1, 1)
+
+[node name="launcher" parent="." node_paths=PackedStringArray("launcher_wall") instance=ExtResource("7_vopbr")]
+position = Vector2(272, 514)
+launcher_wall = NodePath("../one_side_wall2")
+
+[node name="one_side_wall2" parent="." instance=ExtResource("3_6hkll")]
+position = Vector2(272, 384)
+
+[node name="launcher2" parent="." node_paths=PackedStringArray("launcher_wall") instance=ExtResource("7_vopbr")]
+position = Vector2(-271, 514)
+launcher_wall = NodePath("../one_side_wall3")
+
+[node name="one_side_wall3" parent="." instance=ExtResource("3_6hkll")]
+position = Vector2(-270.6, 384)
+scale = Vector2(-1, 1)
+
+[node name="collapse_wall" parent="." node_paths=PackedStringArray("light") instance=ExtResource("8_c3wmh")]
+position = Vector2(268.954, 94.8092)
+rotation = 0.957915
+light = NodePath("../circle_light")
+active_color = Color(0.929412, 0.898039, 0, 0.392157)
+
+[node name="collapse_wall2" parent="." node_paths=PackedStringArray("light") instance=ExtResource("8_c3wmh")]
+position = Vector2(277.777, 107.446)
+rotation = 0.957915
+light = NodePath("../circle_light2")
+active_color = Color(0.929412, 0.898039, 0, 0.392157)
+
+[node name="collapse_wall3" parent="." node_paths=PackedStringArray("light") instance=ExtResource("8_c3wmh")]
+position = Vector2(286.592, 120.114)
+rotation = 0.957915
+light = NodePath("../circle_light3")
+active_color = Color(0.929412, 0.898039, 0, 0.392157)
+
+[node name="circle_light" parent="." instance=ExtResource("9_a2wcq")]
+position = Vector2(242.648, 106.577)
+scale = Vector2(0.5, 0.5)
+
+[node name="circle_light2" parent="." instance=ExtResource("9_a2wcq")]
+position = Vector2(254.235, 123.899)
+scale = Vector2(0.5, 0.5)
+
+[node name="circle_light3" parent="." instance=ExtResource("9_a2wcq")]
+position = Vector2(265.856, 139.354)
+scale = Vector2(0.5, 0.5)
+
+[node name="ring" parent="." instance=ExtResource("10_eqggv")]
+position = Vector2(-100, -350)
+
+[node name="ring2" parent="." instance=ExtResource("10_eqggv")]
+position = Vector2(0, -350)
+
+[node name="ring3" parent="." instance=ExtResource("10_eqggv")]
+position = Vector2(100, -350)
+
+[node name="ring4" parent="." instance=ExtResource("10_eqggv")]
+position = Vector2(-50, -250)
+
+[node name="ring5" parent="." instance=ExtResource("10_eqggv")]
+position = Vector2(50, -250)
+
+[node name="circle_light4" parent="." instance=ExtResource("9_a2wcq")]
+position = Vector2(51, -480)
+
+[node name="circle_light5" parent="." instance=ExtResource("9_a2wcq")]
+position = Vector2(0, -480)
+
+[node name="circle_light6" parent="." instance=ExtResource("9_a2wcq")]
+position = Vector2(-51, -480)
+
+[node name="rail" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(-50, -440)
+light = NodePath("../circle_light6")
+
+[node name="rail2" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(0, -440)
+light = NodePath("../circle_light5")
+
+[node name="rail3" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(50, -440)
+light = NodePath("../circle_light4")
+
+[node name="tri_light4" parent="." instance=ExtResource("12_o1v6o")]
+position = Vector2(-256.57, -146.85)
+rotation = -0.754897
+
+[node name="tri_light3" parent="." instance=ExtResource("12_o1v6o")]
+position = Vector2(-285, -186)
+rotation = -0.442034
+
+[node name="tri_light" parent="." instance=ExtResource("12_o1v6o")]
+position = Vector2(-299, -225)
+rotation = -0.129172
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(357, 93)
+polygon = PackedVector2Array(-666, -107, -672, -137, -673, -146, -672, -156, -665, -168, -656, -176, -647, -183, -634, -185, -621, -178, -662, -257, -671, -279, -676, -298, -678, -324, -678, -350, -674, -398, -692, -405, -706, -414, -711, -397, -712, -380, -714, -342, -714, -322, -714, -278, -714, -248, -698, -185, -692, -161, -682, -138)
+
+[node name="rail4" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(-338, -275)
+rotation = -1.42252
+scale = Vector2(1, 1.3)
+light = NodePath("../tri_light2")
+activated_light = Color(0.276603, 0.869409, 0.834582, 0.392157)
+
+[node name="rail5" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(-339, -213)
+rotation = -1.57005
+scale = Vector2(1, 1.4)
+light = NodePath("../tri_light")
+activated_light = Color(0.802443, 0.801388, 0.0749799, 0.392157)
+
+[node name="rail8" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(-330, -157)
+rotation = -1.99967
+scale = Vector2(1, 2)
+light = NodePath("../tri_light3")
+activated_light = Color(0.276603, 0.869409, 0.834582, 0.392157)
+
+[node name="rail9" parent="." node_paths=PackedStringArray("light") instance=ExtResource("11_sr2ug")]
+position = Vector2(-310, -102)
+rotation = -2.02685
+scale = Vector2(1, 2.5)
+light = NodePath("../tri_light4")
+activated_light = Color(0.802443, 0.801388, 0.0749799, 0.392157)
+
+[node name="tri_light2" parent="." instance=ExtResource("12_o1v6o")]
+position = Vector2(-301, -278)
+rotation = 0.0383977
