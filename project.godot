@@ -15,9 +15,9 @@ run/main_scene="res://Maps/TestMap/TestMap.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
-[debug]
+[autoload]
 
-settings/stdout/print_fps=true
+SignalBus="*res://Objects/SignalBus/signal_bus.tscn"
 
 [display]
 

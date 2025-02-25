@@ -2,12 +2,14 @@ extends Area2D
 @export var light : Polygon2D
 @export var activated_light : Color
 var base_color : Color
-@export var rail_state : bool
+@export var rail_state : bool = false
+@export_range(0,100) var rail_group : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	base_color = light.color
-	pass # Replace with function body.
+	SignalBus.rail_created.emit(rail_group)
+	SignalBus.rail_reset.connect(_on_rail_reset)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,3 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	rail_state = !rail_state
+	SignalBus.rail_activated.emit(rail_group, rail_state)
+
+func _on_rail_reset(group: int) -> void:
+	rail_state = false
