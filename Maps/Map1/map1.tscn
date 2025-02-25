@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3ay080kxkv7s"]
+[gd_scene load_steps=17 format=3 uid="uid://c3ay080kxkv7s"]
 
-[ext_resource type="Script" path="res://Maps/Map1/map_1.gd" id="1_ef8pc"]
 [ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="1_kwka7"]
 [ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="2_nl4ru"]
 [ext_resource type="PackedScene" uid="uid://6a42kv3a8ft4" path="res://Objects/OneSideWall/one_side_wall.tscn" id="3_6hkll"]
@@ -28,7 +27,6 @@ radius = 4.0
 height = 40.0
 
 [node name="map1" type="Node2D"]
-script = ExtResource("1_ef8pc")
 
 [node name="game_controller" parent="." instance=ExtResource("13_x6ku4")]
 

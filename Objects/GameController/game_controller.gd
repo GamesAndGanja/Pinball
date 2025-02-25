@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
 			rails_array[i].active = 0
 			SignalBus.rail_reset.emit(i)
 			print("Rails Mult added: "+ str(rail_multiplier) + ", reset walls" )
+			
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 
 # Ring Scoreing
 
