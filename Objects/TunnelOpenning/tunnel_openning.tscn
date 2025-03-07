@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvgu1c8vcrqik"]
+
+[ext_resource type="Script" path="res://Objects/TunnelOpenning/tunnel_openning.gd" id="1_142cu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_126su"]
+size = Vector2(3, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lnwp"]
+size = Vector2(43, 3)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2d1ai"]
+a = Vector2(-18.5, 0)
+b = Vector2(18.5, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jcxjx"]
+a = Vector2(-21.5, 0)
+b = Vector2(21.5, 0)
+
+[node name="tunnel_openning" type="Node2D"]
+script = ExtResource("1_142cu")
+
+[node name="side_walls" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side_walls"]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_126su")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="side_walls"]
+position = Vector2(-20, 0)
+shape = SubResource("RectangleShape2D_126su")
+
+[node name="top_wall" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="top_wall"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_3lnwp")
+
+[node name="enter_line" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Line" type="CollisionShape2D" parent="enter_line"]
+shape = SubResource("SegmentShape2D_2d1ai")
+
+[node name="exit_line" type="Area2D" parent="."]
+position = Vector2(0, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_line"]
+shape = SubResource("SegmentShape2D_jcxjx")
+
+[connection signal="body_entered" from="enter_line" to="." method="_on_enter_line_body_entered"]
+[connection signal="body_entered" from="exit_line" to="." method="_on_exit_line_body_entered"]
