@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvgu1c8vcrqik"]
 
-[ext_resource type="Script" path="res://Objects/TunnelOpenning/tunnel_openning.gd" id="1_142cu"]
+[ext_resource type="Script" uid="uid://dismigklrnm73" path="res://Objects/TunnelOpenning/tunnel_openning.gd" id="1_142cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126su"]
 size = Vector2(3, 25)
@@ -13,8 +13,8 @@ a = Vector2(-18.5, 0)
 b = Vector2(18.5, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jcxjx"]
-a = Vector2(-21.5, 0)
-b = Vector2(21.5, 0)
+a = Vector2(-18.5, 0)
+b = Vector2(18.5, 0)
 
 [node name="tunnel_openning" type="Node2D"]
 script = ExtResource("1_142cu")
@@ -46,7 +46,7 @@ collision_mask = 3
 shape = SubResource("SegmentShape2D_2d1ai")
 
 [node name="exit_line" type="Area2D" parent="."]
-position = Vector2(0, 14)
+position = Vector2(0, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit_line"]
 shape = SubResource("SegmentShape2D_jcxjx")

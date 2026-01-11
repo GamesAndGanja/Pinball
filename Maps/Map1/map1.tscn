@@ -32,6 +32,7 @@ height = 40.0
 [node name="game_controller" parent="." instance=ExtResource("13_x6ku4")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.9)
 
 [node name="walls" type="RigidBody2D" parent="."]
 collision_layer = 255
@@ -130,12 +131,12 @@ position = Vector2(357, 93)
 polygon = PackedVector2Array(-674, -398, -668, -397, -672, -355, -670, -304, -652, -256, -623, -224, -548, -155, -556, -155, -564, -154, -574, -149, -579, -140, -581, -125, -602, -157, -621, -178, -659, -251, -671, -279, -676, -298, -678, -324, -678, -349)
 
 [node name="ball2" parent="." instance=ExtResource("1_kwka7")]
-position = Vector2(-329, -338)
-mass = 0.03
+position = Vector2(271, 267)
+mass = 0.01
 gravity_scale = 0.8
 
 [node name="bumper" parent="." instance=ExtResource("2_nl4ru")]
-position = Vector2(392, 438)
+position = Vector2(392, 400)
 
 [node name="one_side_wall" parent="." instance=ExtResource("3_6hkll")]
 position = Vector2(392, -27)

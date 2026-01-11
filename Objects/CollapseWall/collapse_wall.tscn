@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb1tkpvedf7ge"]
 
-[ext_resource type="Script" path="res://Objects/CollapseWall/collapse_wall.gd" id="1_0ygc4"]
+[ext_resource type="Script" uid="uid://bnxfwr24ewv7w" path="res://Objects/CollapseWall/collapse_wall.gd" id="1_0ygc4"]
 
 [node name="collapse_wall" type="Area2D"]
 script = ExtResource("1_0ygc4")

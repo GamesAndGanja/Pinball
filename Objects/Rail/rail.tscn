@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://drlxc6a5dpq7q"]
 
-[ext_resource type="Script" path="res://Objects/Rail/rail.gd" id="1_u4n4h"]
+[ext_resource type="Script" uid="uid://corjda5cjx3eh" path="res://Objects/Rail/rail.gd" id="1_u4n4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3pcn"]
 size = Vector2(10, 25)

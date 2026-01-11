@@ -7,6 +7,7 @@ enum State {ACTIVE, DISABLED}
 @onready var collisionbox = $CollisionShape2D
 @onready var launch_timer = $launch_timer
 @onready var timeout_timer = $timeout_timer
+@onready var collision_timer = $collision_timer
 @export var launcher_wall : RigidBody2D
 var launcher_wall_collision : CollisionPolygon2D
 var current_ball : RigidBody2D
@@ -16,6 +17,8 @@ var current_ball : RigidBody2D
 func _ready() -> void:
 	launcher_wall_collision = launcher_wall.get_node("CollisionPolygon2D")
 	launcher_wall_collision.disabled = true
+	timeout_timer.wait_time = timeout_length
+	launch_timer.wait_time = launch_length
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,13 +31,16 @@ func _on_body_entered(body: Node2D) -> void:
 	collisionbox.call_deferred("set_disabled", true)
 	launcher_state = State.DISABLED
 	body.position = self.position
-	launcher_wall_collision.call_deferred("set_disabled", false)
 	launch_timer.start()
-
 
 func _on_launch_timer_timeout() -> void:
 	current_ball.apply_impulse(Vector2.UP * launch_power)
+	collision_timer.start()
 	timeout_timer.start()
+
+func _on_collision_timer_timeout() -> void:
+	launcher_wall_collision.call_deferred("set_disabled", false)
+	
 
 
 func _on_timeout_timer_timeout() -> void:

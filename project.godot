@@ -12,17 +12,23 @@ config_version=5
 
 config/name="New Game Project"
 run/main_scene="res://Maps/Map1/map1.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.5", "Mobile")
+run/max_fps=240
 config/icon="res://icon.svg"
 
 [autoload]
 
 SignalBus="*res://Objects/SignalBus/signal_bus.tscn"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/vsync/vsync_mode=0
 
 [editor]
 
@@ -54,8 +60,10 @@ restart={
 
 [physics]
 
-common/physics_ticks_per_second=500
+common/physics_ticks_per_second=240
+2d/physics_engine="Rapier2D"
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
