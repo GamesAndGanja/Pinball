@@ -19,7 +19,7 @@ node_a = NodePath("base")
 node_b = NodePath("block")
 disable_collision = false
 length = 120.0
-damping = 0.01
+stiffness = 64.0
 
 [node name="base" type="RigidBody2D" parent="spring"]
 position = Vector2(0, 120)
@@ -30,7 +30,7 @@ shape = SubResource("SegmentShape2D_txhco")
 
 [node name="block" type="RigidBody2D" parent="spring"]
 physics_material_override = SubResource("PhysicsMaterial_a5u87")
-gravity_scale = 0.0
+gravity_scale = -0.5
 lock_rotation = true
 freeze_mode = 1
 

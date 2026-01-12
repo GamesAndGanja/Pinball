@@ -30,6 +30,7 @@ height = 40.0
 [node name="map1" type="Node2D"]
 
 [node name="game_controller" parent="." instance=ExtResource("13_x6ku4")]
+tilt_power = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 0.9)
@@ -131,7 +132,7 @@ position = Vector2(357, 93)
 polygon = PackedVector2Array(-674, -398, -668, -397, -672, -355, -670, -304, -652, -256, -623, -224, -548, -155, -556, -155, -564, -154, -574, -149, -579, -140, -581, -125, -602, -157, -621, -178, -659, -251, -671, -279, -676, -298, -678, -324, -678, -349)
 
 [node name="ball2" parent="." instance=ExtResource("1_kwka7")]
-position = Vector2(271, 267)
+position = Vector2(390, 356)
 mass = 0.01
 gravity_scale = 0.8
 

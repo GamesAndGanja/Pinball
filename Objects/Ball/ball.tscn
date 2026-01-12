@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2sxvq6fvsugy"]
+[gd_scene load_steps=6 format=3 uid="uid://d2sxvq6fvsugy"]
+
+[ext_resource type="Script" uid="uid://4ub12i40he3t" path="res://Objects/Ball/ball.gd" id="1_rixfe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4vk3o"]
 bounce = 0.2
@@ -19,6 +21,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_4vk3o")
+script = ExtResource("1_rixfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5hnsf")

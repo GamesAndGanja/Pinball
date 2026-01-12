@@ -5,6 +5,7 @@ var collapsable_walls_array : Array[Dictionary] = []
 var rails_array : Array[Dictionary] = []
 @export_range(0.5, 100) var wall_multiplier : float = 1.5
 @export_range(0.5, 100) var rail_multiplier : float = 2
+@export_range(1, 10) var tilt_power : int = 1
 
 func _ready() -> void:
 	SignalBus.ring_scored.connect(_on_ring_scored)
@@ -33,6 +34,10 @@ func _process(delta: float) -> void:
 			
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("left_tilt"):
+		SignalBus.tilt_left.emit(tilt_power * 100)
+	if Input.is_action_just_pressed("right_tilt"):
+		SignalBus.tilt_right.emit(tilt_power * 100)
 
 # Ring Scoreing
 
