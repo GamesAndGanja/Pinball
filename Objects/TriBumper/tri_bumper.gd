@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var score : int = 10
+@export var score : int = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	SignalBus.ring_scored.emit(score)
+	print("signal time")
+	SignalBus.tribumper_scored.emit(score)

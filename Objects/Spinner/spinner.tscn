@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6or5clyexxgy"]
+
+[ext_resource type="Script" uid="uid://bs17giepku6y2" path="res://Objects/Spinner/spinner.gd" id="1_ysmon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbekb"]
+size = Vector2(25, 25)
+
+[node name="Spinner" type="Area2D"]
+script = ExtResource("1_ysmon")
+metadata/_custom_type_script = "uid://cburu6b4ckehs"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jbekb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://iynavabx0lta"]
+[gd_scene load_steps=3 format=3 uid="uid://iynavabx0lta"]
+
+[ext_resource type="Script" uid="uid://cvsx57jd4lruq" path="res://Objects/TriBumper/tri_bumper.gd" id="1_kv3tl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5xbga"]
 bounce = 1.0
 
 [node name="tri_bumper" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_5xbga")
+can_sleep = false
 freeze = true
+freeze_mode = 1
+script = ExtResource("1_kv3tl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-48.0386, 29.3795, 1.96136, -34.6205, 7.96136, -37.6205, 14.9614, -37.6205, 20.9614, -34.6205, 22.9614, -31.6205, 23.9614, 9.37946, 22.9614, 14.3795, 20.9614, 17.3795, 16.9614, 19.3795, 12.9614, 21.3795, -33.0386, 37.3795, -38.0386, 37.3795, -42.0386, 35.3795, -46.0386, 33.3795)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

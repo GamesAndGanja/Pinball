@@ -9,6 +9,8 @@ var rails_array : Array[Dictionary] = []
 
 func _ready() -> void:
 	SignalBus.ring_scored.connect(_on_ring_scored)
+	SignalBus.tribumper_scored.connect(_on_tribumper_scored)
+	SignalBus.spinner_scored.connect(_on_spinner_scored)
 	
 	SignalBus.collapse_wall_created.connect(_on_collapse_wall_created)
 	SignalBus.collapse_wall_scored.connect(_on_collapse_wall_scored)
@@ -24,13 +26,15 @@ func _process(delta: float) -> void:
 			multiplier += wall_multiplier
 			collapsable_walls_array[i].active = 0
 			SignalBus.collapse_wall_reset.emit(i)
-			print("Collapse Wall Mult added: "+ str(wall_multiplier) + ", reset walls" )
+			SignalBus.multiplier_changed.emit(multiplier)
+			#print("Collapse Wall Mult added: "+ str(wall_multiplier) + ", reset walls" )
 	for i in rails_array.size():
 		if rails_array[i].total == rails_array[i].active:
 			multiplier += rail_multiplier
 			rails_array[i].active = 0
 			SignalBus.rail_reset.emit(i)
-			print("Rails Mult added: "+ str(rail_multiplier) + ", reset walls" )
+			SignalBus.multiplier_changed.emit(multiplier)
+			#print("Rails Mult added: "+ str(rail_multiplier) + ", reset walls" )
 			
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -44,7 +48,24 @@ func _process(delta: float) -> void:
 func _on_ring_scored(ring_score: int) -> void:
 	var score_with_mult = ring_score * multiplier
 	score += score_with_mult
-	print(score)
+	SignalBus.score_changed.emit(score)
+	#print(score)
+
+# Spinner Scoring
+
+func _on_spinner_scored(spinner_score : int) -> void:
+	var score_with_mult = spinner_score * multiplier
+	score += score_with_mult
+	SignalBus.score_changed.emit(score)
+	print("spinnerrrrr")
+
+# Tribumper Scoring
+
+func _on_tribumper_scored(tribumper_score : int) -> void:
+	print("im here!")
+	var score_with_mult = tribumper_score * multiplier
+	score += score_with_mult
+	SignalBus.score_changed.emit(score)
 
 # Collapse Wall setup
 

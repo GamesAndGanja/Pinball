@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3ay080kxkv7s"]
+[gd_scene load_steps=20 format=3 uid="uid://c3ay080kxkv7s"]
 
 [ext_resource type="PackedScene" uid="uid://d2sxvq6fvsugy" path="res://Objects/Ball/ball.tscn" id="1_kwka7"]
-[ext_resource type="PackedScene" uid="uid://djvwbrqfd6nkf" path="res://Objects/Bumper/bumper.tscn" id="2_nl4ru"]
 [ext_resource type="PackedScene" uid="uid://6a42kv3a8ft4" path="res://Objects/OneSideWall/one_side_wall.tscn" id="3_6hkll"]
 [ext_resource type="PackedScene" uid="uid://75vtoo3t8fq8" path="res://Objects/Flipper/flipper.tscn" id="4_milxs"]
 [ext_resource type="PackedScene" uid="uid://iynavabx0lta" path="res://Objects/TriBumper/tri_bumper.tscn" id="5_tyrt1"]
@@ -11,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://ds5vt3wehkuwj" path="res://Objects/Ring/ring.tscn" id="10_eqggv"]
 [ext_resource type="PackedScene" uid="uid://drlxc6a5dpq7q" path="res://Objects/Rail/rail.tscn" id="11_sr2ug"]
 [ext_resource type="PackedScene" uid="uid://dis02ydgw1rj6" path="res://Objects/Lights/tri_light.tscn" id="12_o1v6o"]
+[ext_resource type="PackedScene" uid="uid://p1vme1y5bpg5" path="res://Objects/BaseLauncher/base_launcher.tscn" id="13_015o7"]
 [ext_resource type="PackedScene" uid="uid://bvgu1c8vcrqik" path="res://Objects/TunnelOpenning/tunnel_openning.tscn" id="13_rg5o3"]
 [ext_resource type="PackedScene" uid="uid://dnaq8ycyxw4r3" path="res://Objects/GameController/game_controller.tscn" id="13_x6ku4"]
+[ext_resource type="PackedScene" uid="uid://c6or5clyexxgy" path="res://Objects/Spinner/spinner.tscn" id="14_36bao"]
+[ext_resource type="PackedScene" uid="uid://crubal5gnwtka" path="res://UI/HUD/hud.tscn" id="15_byqux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn4vx"]
 size = Vector2(20, 1080)
@@ -28,6 +30,9 @@ radius = 4.0
 height = 40.0
 
 [node name="map1" type="Node2D"]
+
+[node name="Hud" parent="." instance=ExtResource("15_byqux")]
+anchors_preset = 0
 
 [node name="game_controller" parent="." instance=ExtResource("13_x6ku4")]
 tilt_power = 3
@@ -54,7 +59,7 @@ shape = SubResource("RectangleShape2D_3tfxl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls"]
 position = Vector2(-144, -15)
-polygon = PackedVector2Array(553, -17, 548, -73, 545, -95, 541, -110, 534, -130, 526, -152, 521, -161, 515, -170, 508, -177, 500, -184, 493, -190, 481, -195, 461, -201, 442, -206, 439, -209, 438, -212, 439, -216, 442, -218, 464, -228, 512, -225, 553, -216)
+polygon = PackedVector2Array(553, -27, 548, -73, 545, -95, 541, -110, 534, -130, 526, -152, 521, -161, 515, -170, 508, -177, 500, -184, 493, -190, 481, -195, 461, -201, 442, -206, 439, -209, 438, -212, 439, -216, 442, -218, 464, -228, 512, -225, 553, -216)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="walls"]
 position = Vector2(-80, 29)
@@ -105,7 +110,7 @@ polygon = PackedVector2Array(-288, 370, -288, 148, -288, 129, -287, 117, -282, 1
 [node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="walls"]
 position = Vector2(1, 1)
 scale = Vector2(-1, 1)
-polygon = PackedVector2Array(-288, 370, -288, 217, -288, 202, -287, 182, -282, 166, -275, 158, -266, 151, -284, 140, -293, 125, -266.89, 87.6382, -265.577, 85.9459, -263.798, 84.3269, -233.482, 82.4556, -230.388, 82.102, -227.825, 80.953, -225.969, 78.8317, -225.262, 76.622, -224.407, 71.5019, -229, 64, -357, -9, -356, 84, -357, 334)
+polygon = PackedVector2Array(-288, 370, -288, 217, -288, 202, -287, 182, -282, 166, -276, 157, -270, 149, -284, 140, -293, 125, -266.89, 87.6382, -265.577, 85.9459, -263.798, 84.3269, -233.482, 82.4556, -230.388, 82.102, -227.825, 80.953, -225.969, 78.8317, -225.262, 76.622, -224.407, 71.5019, -229, 64, -357, -9, -356, 84, -357, 334)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
 position = Vector2(-75, -440)
@@ -132,12 +137,9 @@ position = Vector2(357, 93)
 polygon = PackedVector2Array(-674, -398, -668, -397, -672, -355, -670, -304, -652, -256, -623, -224, -548, -155, -556, -155, -564, -154, -574, -149, -579, -140, -581, -125, -602, -157, -621, -178, -659, -251, -671, -279, -676, -298, -678, -324, -678, -349)
 
 [node name="ball2" parent="." instance=ExtResource("1_kwka7")]
-position = Vector2(390, 356)
+position = Vector2(169, 257)
 mass = 0.01
 gravity_scale = 0.8
-
-[node name="bumper" parent="." instance=ExtResource("2_nl4ru")]
-position = Vector2(392, 400)
 
 [node name="one_side_wall" parent="." instance=ExtResource("3_6hkll")]
 position = Vector2(392, -27)
@@ -218,15 +220,6 @@ position = Vector2(0, -350)
 
 [node name="ring3" parent="." instance=ExtResource("10_eqggv")]
 position = Vector2(100, -350)
-
-[node name="ring4" parent="." instance=ExtResource("10_eqggv")]
-position = Vector2(-50, -250)
-
-[node name="ring4" parent="ring4" instance=ExtResource("10_eqggv")]
-position = Vector2(243, 107)
-
-[node name="ring5" parent="." instance=ExtResource("10_eqggv")]
-position = Vector2(50, -250)
 
 [node name="circle_light4" parent="." instance=ExtResource("9_a2wcq")]
 position = Vector2(51, -480)
@@ -321,3 +314,11 @@ polygon = PackedVector2Array(18.3848, -12.7279, 16.2635, -50.2046, -0.707085, -1
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RigidBody2D"]
 polygon = PackedVector2Array(-19.0919, -12.0208, -21.9203, -28.9914, -36.0624, -78.4889, -66.468, -107.48, -101.823, -121.622, -134.35, -120.208, -162.635, -117.38, -164.049, -113.137, -161.927, -109.602, -136.472, -113.844, -103.238, -114.551, -71.4178, -99.7021, -43.8406, -73.5391, -29.6985, -28.2843, -28.9914, -10.6066)
+
+[node name="BaseLauncher" parent="." instance=ExtResource("13_015o7")]
+position = Vector2(392, 503)
+
+[node name="Spinner" parent="." instance=ExtResource("14_36bao")]
+position = Vector2(166, -51)
+collision_layer = 2
+collision_mask = 2
