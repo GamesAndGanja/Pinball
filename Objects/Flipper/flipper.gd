@@ -20,11 +20,15 @@ func _process(delta: float) -> void:
 			flipper_rotation = clamp(self.rotation_degrees + flipper_speed * delta, 70, 120)
 		else:
 			flipper_rotation = clamp(self.rotation_degrees - flipper_speed * delta, 70, 120)
+		if Input.is_action_just_pressed("right_flipper"):
+			SignalBus.rails_moved.emit("right")
 		
 	else:
 		if Input.is_action_pressed("left_flipper"):
 			flipper_rotation = clamp(self.rotation_degrees - flipper_speed * delta, -120, -70)
 		else:
 			flipper_rotation = clamp(self.rotation_degrees + flipper_speed * delta, -120, -70)
+		if Input.is_action_just_pressed("left_flipper"):
+			SignalBus.rails_moved.emit("left")
 	self.rotation_degrees = flipper_rotation
 	pass

@@ -2,7 +2,7 @@ extends Node2D
 var score : float = 0
 var multiplier : int = 1
 var collapsable_walls_array : Array[Dictionary] = []
-var rails_array : Array[Dictionary] = []
+var rails_array : Array[Array] = []
 @export_range(0.5, 100) var wall_multiplier : float = 1.5
 @export_range(0.5, 100) var rail_multiplier : float = 2
 @export_range(1, 10) var tilt_power : int = 1
@@ -16,7 +16,7 @@ func _ready() -> void:
 	SignalBus.collapse_wall_scored.connect(_on_collapse_wall_scored)
 	
 	SignalBus.rail_created.connect(_on_rail_created)
-	SignalBus.rail_activated.connect(_on_rail_activated)
+	SignalBus.rails_moved.connect(_on_rails_move)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,9 +29,8 @@ func _process(delta: float) -> void:
 			SignalBus.multiplier_changed.emit(multiplier)
 			#print("Collapse Wall Mult added: "+ str(wall_multiplier) + ", reset walls" )
 	for i in rails_array.size():
-		if rails_array[i].total == rails_array[i].active:
+		if rails_array[i].all(_check_if_all_rails_active):
 			multiplier += rail_multiplier
-			rails_array[i].active = 0
 			SignalBus.rail_reset.emit(i)
 			SignalBus.multiplier_changed.emit(multiplier)
 			#print("Rails Mult added: "+ str(rail_multiplier) + ", reset walls" )
@@ -78,14 +77,30 @@ func _on_collapse_wall_scored(group: int) -> void:
 
 # Rails setup
 
-func _on_rail_created(group: int) -> void:
-	if rails_array.size() - 1 >= group:
-		rails_array[group].total += 1
+func _on_rail_created(node: Node2D) -> void:
+	var group = node.rail_group
+	if rails_array.size() - 1 == group:
+		rails_array[group].append(node)
 	else:
-		rails_array.append({"total": 1, "active": 0})
+		rails_array.insert(group, [])
+		rails_array[group].append(node)
 
-func _on_rail_activated(group: int, state: bool) -> void:
-	if state:
-		rails_array[group].active += 1
-	else:
-		rails_array[group].active -= 1
+func _check_if_all_rails_active(rail):
+	return rail.rail_state == true
+
+func _on_rails_move(direction : String) -> void:
+	var last_rail_state = false
+	var current_rail_state = null
+	for rail_array in rails_array:
+		if direction == "left":
+			rail_array.reverse()
+		for rail in rail_array:
+			current_rail_state = rail.rail_state
+			rail.rail_state = last_rail_state
+			last_rail_state = current_rail_state
+			current_rail_state = null
+		rail_array[0].rail_state = last_rail_state
+		last_rail_state = false
+		if direction == "left":
+			rail_array.reverse()
+	pass

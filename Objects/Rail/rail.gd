@@ -8,7 +8,7 @@ var base_color : Color
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	base_color = light.color
-	SignalBus.rail_created.emit(rail_group)
+	SignalBus.rail_created.emit(self)
 	SignalBus.rail_reset.connect(_on_rail_reset)
 
 
@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	rail_state = !rail_state
-	SignalBus.rail_activated.emit(rail_group, rail_state)
 
 func _on_rail_reset(group: int) -> void:
 	rail_state = false

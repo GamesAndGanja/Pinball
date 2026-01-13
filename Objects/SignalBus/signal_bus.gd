@@ -7,9 +7,9 @@ signal collapse_wall_created(group : int)
 signal collapse_wall_scored(group : int)
 signal collapse_wall_reset(group : int)
 
-signal rail_created(group : int)
-signal rail_activated(group : int, state: bool)
+signal rail_created(rail_node : Node2D)
 signal rail_reset(group : int)
+signal rails_moved(direction : String)
 
 signal tilt_right(power : int)
 signal tilt_left(power : int)
