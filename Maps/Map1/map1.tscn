@@ -137,7 +137,7 @@ position = Vector2(357, 93)
 polygon = PackedVector2Array(-674, -398, -668, -397, -672, -355, -670, -304, -652, -256, -623, -224, -548, -155, -556, -155, -564, -154, -574, -149, -579, -140, -581, -125, -602, -157, -621, -178, -659, -251, -671, -279, -676, -298, -678, -324, -678, -349)
 
 [node name="ball2" parent="." instance=ExtResource("1_kwka7")]
-position = Vector2(169, 257)
+position = Vector2(392, 253)
 mass = 0.01
 gravity_scale = 0.8
 

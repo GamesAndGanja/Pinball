@@ -57,12 +57,10 @@ func _on_spinner_scored(spinner_score : int) -> void:
 	var score_with_mult = spinner_score * multiplier
 	score += score_with_mult
 	SignalBus.score_changed.emit(score)
-	print("spinnerrrrr")
 
 # Tribumper Scoring
 
 func _on_tribumper_scored(tribumper_score : int) -> void:
-	print("im here!")
 	var score_with_mult = tribumper_score * multiplier
 	score += score_with_mult
 	SignalBus.score_changed.emit(score)

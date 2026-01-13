@@ -7,9 +7,10 @@ bounce = 1.0
 
 [node name="tri_bumper" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_5xbga")
-can_sleep = false
 freeze = true
 freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_kv3tl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
