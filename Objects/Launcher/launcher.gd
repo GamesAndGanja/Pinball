@@ -3,7 +3,7 @@ enum State {ACTIVE, DISABLED}
 @export var launcher_state : State
 @export var timeout_length : float = 300
 @export var launch_length : float = 1
-@export var launch_power : int = 100
+@export var launch_power : int = 4
 @onready var collisionbox = $CollisionShape2D
 @onready var launch_timer = $launch_timer
 @onready var timeout_timer = $timeout_timer
@@ -34,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 	launch_timer.start()
 
 func _on_launch_timer_timeout() -> void:
-	current_ball.apply_impulse(Vector2.UP * launch_power)
+	current_ball.apply_force(Vector2(0, -launch_power * 1000))
 	collision_timer.start()
 	timeout_timer.start()
 
